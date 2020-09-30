@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #ddd;
+				color : white;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+		</style>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<p align = "center"><b><i>Values of the gpu</i></b></p>
+		<!-- Comparing and displaying the GPUs based on the features selected by the user -->
+		<div align = "center">
+			<table style="width : 90%">
+				<tr>
+					<th> Device </th>
+					<th> geometryShader </th>
+					<th> tesselationShader </th>
+					<th> shaderInt16 </th>
+					<th> sparseBinding </th>
+					<th> textureCompressionETC2 </th>
+					<th> vertexPipelineStoresAndAtomics </th>
+				</tr>
+				{% for x in list_of_devices_checked %}
+					<tr>
+						<td> {{ x.key.id() }} </td>
+						<td> {{ x.geometryShader }} </td>
+						<td> {{ x.tesselationShader }} </td>
+						<td> {{ x.shaderInt16 }} </td>
+						<td> {{ x.sparseBinding }} </td>
+						<td> {{ x.textureCompressionETC2 }} </td>
+						<td> {{ x.vertexPipelineStoresAndAtomics }} </td>	
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>

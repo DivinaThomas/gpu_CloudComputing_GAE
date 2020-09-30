@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #ddd;
+				color : white;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+			.sec
+			{
+				margin-top : 2%;
+			}
+		</style>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<p align = "center"><b><i>Check the checkbox to compare</i></b></p>
+		<!-- Displaying the existing GPUs -->
+		<div class ="tab" align = "center">
+			<form method = "post" action="/compare">
+			<table style="width : 60%">
+					<tr>
+						<th> DEVICE </th>
+						<th> CHECKBOX </th>
+					</tr>
+					{% for x in result %}
+				 
+						<tr>
+							<td> {{ x.key.id() }} </td>
+							<td> <input type = "checkbox" name ="checkbox_{{x.key.id()}}" value = "True"/> </td>
+						</tr>
+					{% endfor %}
+			</table>
+		</div>
+		<div class = "sec" align ="center">
+			<input type = "submit" value = "Compare" name = "Button"/>
+			<input type = "submit" value = "Cancel" name = "Button"/>
+		</div>
+		</form>
+		<p align = "center"><b><i>{{ error_message }}</i></b></p>
+	</body>
+</html>
