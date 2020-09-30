@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #ddd;
+				color : white;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+			}
+			.tb
+			{
+			    margin-top : 2%;
+			}
+			.button
+			{
+				margin-top : 2%;
+				width : 100%;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+			.sec
+			{
+				margin-top : 2%;
+			}
+		</style>
+		<meta charset="utf-8"/>
+		<title>User login/logout with datastore</title>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<!-- Displaying features of a particular GPU -->
+		<p align = "center"><b><i>Values of the features of the gpu {{ gpu.key.id() }}</i></b></p>
+		<div class = "tb" align = "center">
+			<table width = "60%">	
+				<tr>
+					<th>Features</th>
+					<th>Values</th>
+				</tr>
+				<tr>
+					<td> geometryShader </td>
+					<td> {{ gpu.geometryShader }} </td
+				</tr>
+				<tr>
+					<td> tesselationShader </td>
+					<td> {{ gpu.tesselationShader }} </td
+				</tr>
+				<tr>
+					<td> shaderInt16 </td>
+					<td> {{ gpu.shaderInt16 }} </td
+				</tr>
+				<tr>
+					<td> sparseBinding </td>
+					<td> {{ gpu.sparseBinding }} </td
+				</tr>
+				<tr>
+					<td> textureCompressionETC2 </td>
+					<td> {{ gpu.textureCompressionETC2 }} </td
+				</tr>
+				<tr>
+					<td> vertexPipelineStoresAndAtomics </td>
+					<td> {{ gpu.vertexPipelineStoresAndAtomics }} </td
+				</tr>
+			</table>
+		</div>
+		<div class = "sec" align = "center">
+			<form method = "post" action="/update">
+				<input type = "submit" value = "Edit" name = "button"/>
+				<input type = "hidden" value = "{{ gpu.key.id() }}" name = "hidden_value"/>
+			</form>
+			<form method = "post" action = "/main">
+				<input type = "submit" value = "Delete" name = "button"/>
+				<input type = "hidden" value = "{{ gpu.key.id() }}" name = "hidden_id"/>
+			</form>
+			<form action = "/main">
+				<input type = "submit" value = "Cancel" name = "button"/>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #4CAF50;
+				color : white;
+			}
+			.button
+			{
+				margin-top : 1%;
+				width : 30%;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+				margin-top : 5%;
+			}
+			.dropdown
+			{
+				width : 100%;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<p align = "center"><b><i>Add a new value here</i></b></p>
+		<div align = "center">
+			<form method = "post" action="/add">
+				<!-- Allowing the user to add a new GPU with required features -->
+				<table>
+					<tr>
+						<td> DEVICE </td>
+						<td> <input type="text" name ="gpu_device" placeholder = "Enter a unique gpu device" required/> </td>
+						
+					</tr>
+					<tr>
+						<td> geometryShader </td>
+						<td> <select name="gpu_geometryShader" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+					<tr>
+						<td> tesselationShader </td>
+						<td> <select name="gpu_tesselationShader" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+					<tr>
+						<td> shaderInt16 </td>
+						<td> <select name="gpu_shaderInt16" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+					<tr>
+						<td> sparseBinding </td>
+						<td> <select name="gpu_sparseBinding" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+					<tr>
+						<td> textureCompressionETC2 </td>
+						<td> <select name="gpu_textureCompressionETC2" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+					<tr>
+						<td> vertexPipelineStoresAndAtomics </td>
+						<td> <select name="gpu_vertexPipelineStoresAndAtomics" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+						     </select>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" name="button" value="Add" class ="button"/>
+			</form>
+			<form action="/main">
+				<input type = "submit" value = "Cancel" name = "button" class ="button" />
+			</form>
+		</div>
+		<p align = "center"><b><i>{{ error_message }}</i></b></p>
+		
+	</body>
+</html>

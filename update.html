@@ -1,0 +1,190 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #ddd;
+				color : white;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+			}
+			.tb
+			{
+			    padding-top: 50px;
+			    padding-right: 30px;
+			    padding-bottom: 50px;
+			    padding-left: 80px;
+			}
+			.button
+			{
+				margin-top : 2%;
+				width : 10%;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+			.sec
+			{
+				margin-top : 2%;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<!-- Displaying the existing feature values of a particular GPU-->
+		<p align = "center"><b><i>You can edit the information below</i></b></p>
+		<div class = "sec" align = "center">
+			<form method = "post" action="/update">
+				<table width = "50%">
+					<tr>
+						<td> DEVICE </td>
+						<td> {{ gpu.key.id() }} </td>	
+					</tr>
+					<tr>
+						<td> geometryShader </td>
+						 {% if gpu.geometryShader == "True" %}
+						<td>
+							<select name="gpu_geometryShader" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_geometryShader" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						     {% endif %}
+					</tr>
+					<tr>
+						<td> tesselationShader </td>
+						{% if gpu.tesselationShader == "True" %}
+						<td>
+							<select name="gpu_tesselationShader" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_tesselationShader" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						  {% endif %}	
+					</tr>
+					<tr>
+						<td> shaderInt16 </td>
+						{% if gpu.shaderInt16 == "True" %}
+						<td>
+							<select name="gpu_shaderInt16" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_shaderInt16" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						  {% endif %}
+						
+					</tr>
+					<tr>
+						<td> sparseBinding </td>
+						{% if gpu.sparseBinding == "True" %}
+						<td>
+							<select name="gpu_sparseBinding" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_sparseBinding" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						  {% endif %}
+					</tr>
+					<tr>
+						<td> textureCompressionETC2 </td>
+						{% if gpu.textureCompressionETC2 == "True" %}
+						<td>
+							<select name="gpu_textureCompressionETC2" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_textureCompressionETC2" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						  {% endif %}
+					</tr>
+					<tr>
+						<td> vertexPipelineStoresAndAtomics </td>
+						{% if gpu.vertexPipelineStoresAndAtomics == "True" %}
+						<td>
+							<select name="gpu_vertexPipelineStoresAndAtomics" class = "dropdown">
+							<option value="True">True</option>
+							<option value = "False">False</option>
+							 </select> </td>
+						     {% else %}
+						<td>
+							<select name="gpu_vertexPipelineStoresAndAtomics" class = "dropdown">
+							<option value="False">False</option>
+							<option value = "True">True</option>
+							 </select> </td>
+						  {% endif %}
+					</tr>
+				</table>
+				<input type="submit" name="button" value="Update" class ="button"/>
+				<input type="hidden" name = "hidden_id" value="{{  gpu.key.id() }}"/>
+			</form>
+			<form method = "post" action="/update">
+				<input type = "submit" value = "Cancel" name = "button" class ="button" />
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #4CAF50;
+				color : white;
+			}
+			.sec
+			{
+				overflow: hidden;
+				padding-top: 1%;
+				padding-right: 40%;
+				padding-bottom: 2%;
+				padding-left: 40%;
+				text-align : center;
+				color : #f2f2f2;
+			}
+			table, th, td 
+			{
+				margin-top : 10%;
+				border: 1px solid black;
+				text-align: center;
+			}
+			p
+			{
+				font-size : 50px;
+			}
+		</style>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<!-- Allowing the users to search for GPUs based on features -->
+		<p align = "center"><b><i>Check the checkbox if you want this feature in your GPU</i></b></p>
+		<div align = "center">
+			<form method = "post" action="/search">
+			<table style="width : 40%">
+				<tr>
+					<td> geometryShader </td>
+					<td> <input type = "checkbox" name ="checkbox_geometryShader" value = "True"/> </td>
+				</tr>
+				<tr>
+					<td> tesselationShader </td>
+					<td> <input type = "checkbox" name ="checkbox_tesselationShader" value = "True"/> </td>
+				</tr>
+				<tr>
+					<td> shaderInt16 </td>
+					<td> <input type = "checkbox" name ="checkbox_shaderInt16" value = "True"/> </td>
+				</tr>
+				<tr>
+					<td> sparseBinding </td>
+					<td> <input type = "checkbox" name ="checkbox_sparseBinding" value = "True"/> </td>
+				</tr>
+				<tr>
+					<td> textureCompressionETC2 </td>
+					<td> <input type = "checkbox"name ="checkbox_textureCompressionETC2" value = "True"/> </td>
+				</tr>
+				<tr>
+					<td> vertexPipelineStoresAndAtomics </td>
+					<td> <input type = "checkbox"name ="checkbox_vertexPipelineStoresAndAtomics" value = "True"/> </td>
+				</tr>
+			</table>
+		</div>
+		<div class = "sec">
+			<input type = "submit" value = "Search" name = "button"/>
+			<input type = "submit" value = "Cancel" name = "button" style = "margin-left:10%;"/>
+		</div>
+		</form>
+	</body>
+</html>

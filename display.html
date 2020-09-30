@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<style>
+		body
+		{
+			padding : 0;
+			margin : 0;
+			background-color : white ;
+		}
+		table, th, td 
+		{
+			border: 1px solid black;
+			text-align: center;
+			margin-top : 10%;
+		}
+		.nav{
+			overflow: hidden;
+			background-color: #111;
+			margin : 0;
+			padding : 0;
+			text-align : center;
+		}
+		.nav a
+		{
+			float: left;
+			color : #f2f2f2;
+			display: block;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size : 17px;
+		}
+		.nav a:hover
+		{
+			background-color: #4CAF50;
+			color : black;
+		}
+		.nav a.active
+		{
+			background-color: #4CAF50;
+			color : white;
+		}
+		p
+		{
+			font-size : 50px;
+		}	
+		</style>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<p align = "center"><b><i>{{ message }}</i></b></p>
+		<!-- Displaying all the existing GPUs -->
+		<div align = "center" >
+			<table style="width : 40%">
+				{% for x in result_of_querying %}
+				
+				<tr>
+					<td> {{ x.key.id() }} </td>
+				</tr>
+				<tr>
+				
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>
+

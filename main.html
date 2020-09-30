@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<style>
+			body
+			{
+				padding : 0;
+				margin : 0;
+				background-color : white ;
+			}
+			.nav{
+				overflow: hidden;
+				background-color: #111;
+				margin : 0;
+				padding : 0;
+				text-align : center;
+			}
+			.nav a
+			{
+				float: left;
+				color : #f2f2f2;
+				display: block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size : 17px;
+			}
+			.nav a:hover
+			{
+				background-color: #4CAF50;
+				color : black;
+			}
+			.nav a.active
+			{
+				background-color: #4CAF50;
+				color : white;
+			}
+			table, th, td 
+			{
+				border: 1px solid black;
+				text-align: center;
+			}
+			th
+			{
+				background-color :#00fa9a;
+			}
+			div 
+			{
+				padding-top: 50px;
+				padding-right: 30px;
+				padding-bottom: 50px;
+				padding-left: 80px;
+			}
+			.button
+			{
+				font-size: 1em;
+				text-align: left;
+				color: blue;
+				background: none;
+				margin: 0;
+				padding: 0;
+				border: none;
+				cursor: pointer;
+			}
+		</style>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<!-- Nav Bar -->
+		<div class = "nav">
+			<a href ="/main">Home</a>
+			<a href = "/add">Add</a>
+			<a href = "/search">Search</a>
+			<a href = "/compare">Compare</a>
+			<a href = "{{ logout }}">Logout</a>
+		</div>
+		<div align = "center">
+			<!-- Displaying all the existing GPUs for a particular user -->
+			<table style="width : 40%">
+					<tr>
+						<th> GPU </th>
+					</tr>
+					{% for x in result %}
+						<tr>
+							<form id="HiddenForm" method="post" action="/feature" >
+								<input type="hidden" name="hidden_link" value="{{ x.key.id() }}">
+							
+							<td> <input type="submit" value = "{{ x.key.id() }}" name="button" class = "button"></a> </td>
+							</form>
+						</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>
+		
